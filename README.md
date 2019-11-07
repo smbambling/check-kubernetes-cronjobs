@@ -15,7 +15,7 @@ Dockerized Python Utility To Check The Status Of Kubernetes CronJobs
 
 ## Usage
 
-###Manually via Docker run
+### Manually via Docker run
 
 ```
 docker run --rm -it -v ~/.kube:/root/.kube \
