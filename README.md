@@ -69,10 +69,47 @@ OK: [1/1] CronJobs ran successfully in Kubernetes Namespace = default
 
 ## Development
 
+### Overview
+
+1. Create feature branch of master
+1. Make updates in feature branch
+1. Create pull request (PR) from feature branch into master
+1. Feature branch merged into master
+1. Build **latest** artifact (Docker image)
+1. Testing is performed on the **latest** artifact
+1. Master branch is 'released' into stable
+  1. Bump version
+  1. Build artifact (Docker image)
+  1. Tag + Push artifact (Docker image)
+  1. Tag `master` branch
+  1. Merge `master` branch into `stable`
+  1. Push `master` + `stable` branches
+
+To aid in the build and release steps for development the utility `develop.sh` is used.
+
+To build the **latest** artifact (Docker image) from your current branch pass the `-b` argument 
+
+```bash 
+./develop.sh -b
+```
+
+To release a tested version of the artifact (Docker image) from the `master` branch pass the `-r` argument with an optional `-v` argument to bump a specific patch level
+
+```bash
+./develop.sh -r
+```
+```bash
+$ ./develop.sh --help
+Usage: ./develop.sh -b|-r -v
+where:
+    -b Build Docker image
+    -r Build+Release Docker iamge
+    -v Version bump level { major, minor, patch(default) 
+```
+
 ### Branching
 
 See the [BRANCHING.md](./docs/BRANCHING.md) file for details
-
 
 ## Versioning
 

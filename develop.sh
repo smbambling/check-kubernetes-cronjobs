@@ -12,8 +12,8 @@ usage() {
 Usage: $0 -b|-r -v
 where:
     -b Build Docker image
-    -r Build+Release Docker iamge
-    -v Version bump level { major, minor, patch }
+    -r Build+Release Docker image
+    -v Version bump level { major, minor, patch(default) }
 EOF
    exit 0
 }
@@ -103,10 +103,10 @@ fi
 
 if [ "${BUILDTYPE}" == "build" ]; then
   build
+  # dockerpush
 elif [ "${BUILDTYPE}" == "release" ]; then
   release
 else
   echo "ERROR: Not building or release, something went wrong"
   exit 1
 fi
-
