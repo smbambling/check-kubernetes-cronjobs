@@ -93,7 +93,7 @@ release() {
   build
   # testing
   gittag
-  # dockerpush
+  dockerpush
 }
 
 if [[ ! "${VER_BUMP}" =~ ^(major|minor|patch)$ ]]; then
