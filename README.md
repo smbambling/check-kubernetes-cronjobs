@@ -15,10 +15,31 @@ Dockerized Python Utility To Check The Status Of Kubernetes CronJobs
 
 ## Usage
 
+###Manually via Docker run
+
 ```
 docker run --rm -it -v ~/.kube:/root/.kube \
-smbambling/check-kubernetes-cronjobs:1.0.0 --namespace stage
+smbambling/check-kubernetes-cronjobs:latest --namespace default
 ```
+
+### `check_kubernetes_cronjobs.sh` Shell Script
+
+```bash
+$ ./check_kubernetes_cronjobs.sh -n stage -v latest
+OK: [0/0] CronJobs ran successfully in Kubernetes Namespace = default
+```
+
+```bash
+$ ./check_kubernetes_cronjobs.sh --help
+Usage: ./check_kubernetes_cronjobs.sh -k -n
+where:
+    -k Kubeconfig
+      [default: /Users/smbambling/.kube/config]
+    -n Kubernetes Namespace {required}
+    -v check-kubernetes-cronjobs Docker image version
+      [default: latest]
+```
+
 
 ### Example Output
 
