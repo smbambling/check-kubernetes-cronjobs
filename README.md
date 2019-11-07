@@ -69,8 +69,9 @@ OK: [1/1] CronJobs ran successfully in Kubernetes Namespace = default
 
 ## Development
 
-References:
-  [branching-strategy](https://github.com/mobify/branching-strategy/blob/master/release-deployment.md)
+### Branching
+
+See the [BRANCHING.md](./docs/BRANCHING.md) file for details
 
 
 ## Versioning
@@ -84,4 +85,5 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 See also the list of [contributors](https://github.com/smbambling/check-kubernetes-cronjobs/contributors) who participated in this project.
 
 ## License
+
 This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details

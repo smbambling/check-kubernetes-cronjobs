@@ -66,21 +66,34 @@ build() {
   fi
 }
 
-dockertag() {
+gittag() {
+  git add VERSION
+  git commit -m "Release ${VERSION}"
   git tag -a "${VERSION}" -m "release ${VERSION}"
-  git p ush --tags
+  git push --tags
+  git push -u origin master
+  git checkout stable
+  git merge master
+  git push -u origin stable
+  git checkout master
 }
 
-push() {
+dockerpush() {
   docker push "${USERNAME}/${IMAGE_NAME}:latest"
   docker push "${USERNAME}/${IMAGE_NAME}:${VERSION}"
 }
 
 release() {
+  MYBRANCH=$(git rev-parse --abbrev-ref HEAD)
+  if [ "${MYBRANCH}" != "master" ]; then
+    echo "Refusing to release off non master branch"
+    exit 1
+  fi
   bump
   build
-  dockertag
-  # push
+  # testing
+  gittag
+  # dockerpush
 }
 
 if [[ ! "${VER_BUMP}" =~ ^(major|minor|patch)$ ]]; then
